@@ -3,7 +3,7 @@ import historyModel from "../models/historyModel.js";
 
 
 export const getUsers = async (req, res) => {
-  const users = await userModel.find();
+  const users = await userModel.find().sort({ totalPoints: -1 });;
   res.json(users);
 };
 
@@ -18,15 +18,20 @@ export const claimPoints = async (req, res) => {
   const { userId } = req.body;
   const randomPoints = Math.floor(Math.random() * 10) + 1;
 
-  const user = await userModel.findById(userId);
+  // Update and return the updated document in one go
+  const user = await userModel.findByIdAndUpdate(
+    userId,
+    { $inc: { totalPoints: randomPoints } },
+    { new: true }
+  );
+
   if (!user) return res.status(404).json({ message: "User not found" });
 
-  user.totalPoints += randomPoints;
-  await user.save();
-
+  //  Save history
   const history = new historyModel({ userId, points: randomPoints });
   await history.save();
 
+  //  Return fully updated data
   res.json({ user, claimed: randomPoints });
 };
 

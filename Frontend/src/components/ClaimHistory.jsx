@@ -5,7 +5,7 @@ const ClaimHistory = ({ history = [] }) => {
   if (!history.length) return null;
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow-md max-h-64 overflow-y-auto border border-gray-100">
+    <div className="bg-white p-5 rounded-xl shadow-md max-h-screen overflow-y-auto border border-gray-100">
       {/* Header */}
       <h2 className="text-xl font-bold mb-4 text-purple-700 flex items-center gap-2">
         <FaScroll className="text-purple-500" /> Claim History
