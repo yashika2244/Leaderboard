@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
@@ -15,7 +14,8 @@ const AddUserForm = ({ onAddUser }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       <label className=" text-sm font-semibold text-gray-800 flex gap-1 items-center">
-        <FaUserAlt />Add New User
+        <FaUserAlt />
+        Add New User
       </label>
 
       <input
@@ -26,13 +26,13 @@ const AddUserForm = ({ onAddUser }) => {
         onChange={(e) => setName(e.target.value)}
       />
 
-     <button
-  type="submit"
-  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg shadow font-medium transition-all duration-200 flex items-center justify-center gap-2"
->
-  <FaPlus className="text-sm" />
-  Add User
-</button>
+      <button
+        type="submit"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg shadow font-medium transition-all duration-200 flex items-center justify-center gap-2"
+      >
+        <FaPlus className="text-sm" />
+        Add User
+      </button>
     </form>
   );
 };

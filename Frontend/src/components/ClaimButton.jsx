@@ -1,14 +1,17 @@
 import React from "react";
 
-const ClaimButton = ({ onClaim, lastClaimed }) => {
+const ClaimButton = ({ onClaim, lastClaimed ,isClaiming}) => {
   return (
     <div className="space-y-4">
       {/* Claim Action Button */}
-      <button
+        <button
         onClick={onClaim}
-        className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition-all duration-200 text-white py-3 px-4 rounded-xl shadow-md text-sm sm:text-base font-semibold tracking-wide"
+        disabled={isClaiming}
+        className={`w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition-all duration-200 text-white py-3 px-4 rounded-xl shadow-md text-sm sm:text-base font-semibold tracking-wide ${
+          isClaiming ? "opacity-50 cursor-not-allowed" : ""
+        }`}
       >
-        🎯 Claim Random Points
+        {isClaiming ? "⏳ Claiming..." : "🎯 Claim Random Points"}
       </button>
 
       {/* Last Claimed Info */}

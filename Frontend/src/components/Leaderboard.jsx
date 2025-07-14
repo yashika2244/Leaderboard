@@ -3,7 +3,13 @@ import React from "react";
 const getAvatar = (id) => `https://i.pravatar.cc/150?u=${id}`;
 
 const Leaderboard = ({ leaderboard }) => {
-  if (!leaderboard || leaderboard.length === 0) return null;
+  if (!leaderboard || leaderboard.length === 0){
+    return (
+      <div className="text-center text-gray-500 py-10">
+        🚫 No users found. Please add a user to start the leaderboard.
+      </div>
+    );
+  }
 
   const sorted = [...leaderboard].sort((a, b) => b.totalPoints - a.totalPoints);
   const top10 = sorted.slice(0, 10);
@@ -11,13 +17,14 @@ const Leaderboard = ({ leaderboard }) => {
   const others = top10.slice(3);
 
   return (
-    <div className="bg-orange-50 to-white p-4 min-h-screen">
+    <div className="bg-orange-50 to-white p-4 ">
       {/* Header */}
-      <div className="text-center mb-6">
-        <h1 className="text-lg font-semibold text-purple-700">
-          ⏰ Hourly Ranking
-        </h1>
-      </div>
+    <div className="text-center mb-6 sticky top-0 z-10    bg-orange-50">
+  <h1 className="text-lg font-semibold text-purple-700">
+    ⏰ Hourly Ranking
+  </h1>
+</div>
+
 
       {/* Top 3 Podium */}
       <div className="flex justify-center md:gap-4 items-end  ">
@@ -187,11 +194,11 @@ const Leaderboard = ({ leaderboard }) => {
       </div>
 
       {/* Rank 4+ Users */}
-      <div className="md:space-y-1">
+      <div className="md:space-y-1 ">
         {others.map((user, index) => (
           <div
             key={user._id}
-            className="flex items-center justify-between bg-white p-3 md:rounded-lg shadow hover:shadow-md transition-all duration-200"
+            className="flex  items-center justify-between bg-white p-3 md:rounded-lg shadow hover:shadow-md transition-all duration-200"
           >
             {/* Left: Rank, Avatar, Name */}
             <div className="flex items-center gap-3">
@@ -255,3 +262,4 @@ const Leaderboard = ({ leaderboard }) => {
 };
 
 export default Leaderboard;
+

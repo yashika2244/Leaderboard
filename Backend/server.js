@@ -2,7 +2,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from  "./config/db.js"
+import connectDB from "./config/db.js"
 import userRoutes from "./routers/userRoutes.js";
 
 dotenv.config();
@@ -14,7 +14,7 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin:[ "http://localhost:5173", "https://leaderboard-zeta-ten.vercel.app"],
+    origin: ["http://localhost:5173", "https://leaderboard-zeta-ten.vercel.app"],
     credentials: true,
   })
 );

@@ -8,17 +8,28 @@ export const getUsers = async (req, res) => {
 };
 
 export const addUser = async (req, res) => {
-  const { name } = req.body;
+  const name = req.body.name ?? "";
+
+  if (!name)
+    return res.status(400).json({ message: "Name is required" });
+
+  const existingUser = await userModel.findOne({ name });
+
+  if (existingUser) {
+    return res.status(400).json({ message: "User with this name already exists" });
+  }
+
   const user = new userModel({ name });
   await user.save();
-  res.json(user);
+  res.status(201).json(user);
 };
+
+
 
 export const claimPoints = async (req, res) => {
   const { userId } = req.body;
   const randomPoints = Math.floor(Math.random() * 10) + 1;
 
-  // Update and return the updated document in one go
   const user = await userModel.findByIdAndUpdate(
     userId,
     { $inc: { totalPoints: randomPoints } },
