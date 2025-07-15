@@ -7,7 +7,7 @@ const ClaimButton = ({ onClaim, lastClaimed ,isClaiming}) => {
         <button
         onClick={onClaim}
         disabled={isClaiming}
-        className={`w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition-all duration-200 text-white py-3 px-4 rounded-xl shadow-md text-sm sm:text-base font-semibold tracking-wide ${
+        className={`w-full cursor-pointer bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition-all duration-200 text-white py-3 px-4 rounded-xl shadow-md text-sm sm:text-base font-semibold tracking-wide ${
           isClaiming ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >

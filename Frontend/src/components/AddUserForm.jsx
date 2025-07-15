@@ -28,7 +28,7 @@ const AddUserForm = ({ onAddUser }) => {
 
       <button
         type="submit"
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg shadow font-medium transition-all duration-200 flex items-center justify-center gap-2"
+        className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg shadow font-medium transition-all duration-200 flex items-center justify-center gap-2"
       >
         <FaPlus className="text-sm" />
         Add User
